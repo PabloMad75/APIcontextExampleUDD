@@ -1,18 +1,26 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import UsersContext from "../context/UsersContext"
+
 
 export const UserList = () => {
   
     const  globalContext = useContext(UsersContext)
     
-    const { users } = globalContext.initialState
-  
+    const { usersData, getUsers } = globalContext
+
+    
+
+
+    useEffect(() => {
+        getUsers()
+    }, [])
+
     return (
     <>
         <h2> Lista de Usuarios </h2>
 
         {
-            users.map(user => {
+            usersData.map(user => {
                 return (
                     <div key = {user.id}>
                         <h3>{user.nombre} {user.apellido}</h3>
