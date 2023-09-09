@@ -1,5 +1,6 @@
 
 import './App.css'
+import { UserState } from './context/UserState'
 import { AppRouter } from './router/AppRouter'
 
 function App() {
@@ -7,7 +8,9 @@ function App() {
 
   return (
     <>
-      <AppRouter />
+      <UserState>
+        <AppRouter />
+      </UserState>
     </>
   )
 }
