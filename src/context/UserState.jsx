@@ -23,10 +23,9 @@ export const UserState = ({children}) => {
     const getUsers = async() => {
         try {
             const response = await axiosClient.get('/users')
-            console.log(response)
 
             dispatch({
-                type: "OBTENER_USUARIO",
+                type: "OBTENER_USUARIOS",
                 payload: response.data 
             })
         } catch (error) {
