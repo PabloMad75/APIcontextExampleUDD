@@ -1,7 +1,10 @@
+import { LoginForm } from "../components/LoginForm"
 
 
-export const loginPage = () => {
+export const LoginPage = () => {
   return (
-    <div>loginPage</div>
+    <>
+        <LoginForm />
+    </>
   )
 }

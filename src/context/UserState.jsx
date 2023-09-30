@@ -3,10 +3,11 @@ import UsersContext from './UsersContext'
 import { reducer } from './UserReducer'
 import { axiosClient } from '../config/api'
 
+
 export const UserState = ({children}) => {
 
     const initialState = {
-        users: [
+        usersData: [
             {
                 id: '',
                 nombre: '',
@@ -48,6 +49,42 @@ export const UserState = ({children}) => {
         }
     }
 
+    const loginUser = async(dataForm) => {
+        try {
+            const response = await axiosClient.post('/login', dataForm)
+
+            dispatch({
+                type: "LOGIN_EXITOSO",
+                payload: response.data
+            })
+
+            console.log('soy el pulento login')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const verifyingToken = async() => {
+        const token = localStorage.getItem('token')
+
+        console.log(token)
+
+        if(token) {
+            axiosClient.defaults.headers.common['authorization'] = token
+        }else{
+            delete axiosClient.defaults.headers.common['authorization']
+        }
+
+        const response = await axiosClient.get('/verify-token')
+
+        console.log(response)
+
+        dispatch({
+            type: "OBTENER_USUARIO",
+            payload: response.data
+        })
+    }
+
 
 
     return (
@@ -55,7 +92,9 @@ export const UserState = ({children}) => {
             value={{
                 usersData: globalState.users,
                 getUsers,
-                signupUser
+                signupUser,
+                loginUser,
+                verifyingToken
             }}
         >{children}</UsersContext.Provider>
     )
