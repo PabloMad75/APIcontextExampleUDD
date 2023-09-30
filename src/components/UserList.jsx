@@ -8,8 +8,6 @@ export const UserList = () => {
     
     const { usersData, getUsers } = globalContext
 
-    
-
 
     useEffect(() => {
         getUsers()

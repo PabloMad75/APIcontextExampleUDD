@@ -1,14 +1,14 @@
-export const reducer = (globalState, action) => {
+export const bookReducer = (globalState, action) => {
 
     switch(action.type) {
 
-        case "OBTENER_USUARIOS":
+        case "OBTENER_LIBROS":
             return {
                 ...globalState,
-                newUser: action.payload
+                newBook: action.payload
             }
-
         default: 
             return globalState
     }
 }
+
