@@ -1,13 +1,14 @@
-import { useState, useContext, useEffect } from 'react'
-import BookContext from '../context/BookContext/BookContext'
+import {  useContext, useEffect, useState } from 'react'
+
+import BookContext from '../context/BookContext'
 
 export const BookTable = () => {
 
-    const [books, setBooks] = useState([])
-
+    const [books, setBooks ] = useState([])
+    
     const globalContext = useContext(BookContext)
 
-    const { getBooks } = globalContext
+    const { getBooks} = globalContext
 
     const getAllBooks = async() => {
         const data = await getBooks()
@@ -32,18 +33,16 @@ export const BookTable = () => {
                                     <th>Accion</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 {
-                                    books.map(book => (
-                                        <tr key={ book._id }>
-                                            <td>{book.titulo}</td>
-                                            <td>{book.autor}</td>
-                                            <td>{book.precio}</td>
-                                            <td><button className='btn btn-primary'>Añadir al carrito</button></td>
-                                        </tr>
-                                    ))
-                                }
+                                books.map (book => (
+                                    <tr key={book._id}>
+                                        <td>{book.titulo}</td>
+                                        <td>{book.autor}</td>
+                                        <td>{book.precio}</td>
+                                        <td><button className="btn btn-primary">paypal</button></td>
+                                    </tr>)
+                                )}
                             </tbody>
                         </table>
                     </div>
@@ -51,4 +50,5 @@ export const BookTable = () => {
             </div>
         </>
     )
+    
 }

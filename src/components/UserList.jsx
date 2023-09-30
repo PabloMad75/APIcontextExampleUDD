@@ -3,7 +3,7 @@ import UsersContext from "../context/UsersContext"
 
 
 export const UserList = () => {
-  
+    
     const  globalContext = useContext(UsersContext)
     
     const { usersData, getUsers } = globalContext
