@@ -14,7 +14,7 @@ export const HomePage = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <PaypalButton />
+              <PaypalButton invoice={'libro 1, libro 2'} totalValue={'25.99'}/>
             </div>
           </div>
         </div>
