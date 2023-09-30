@@ -18,9 +18,17 @@ export const PaypalButton = ({invoice, totalValue}) => {
             
             onApprove={ async (data, actions) => {
                 const order = await actions.order?.capture()
-                console.log(order)
-            }}
-        />
-            
+                try {
+                    console.log(order)
+                    window.alert('pago exitoso')
+                    
+                } catch (error) {
+                    console.error(error)
+                }
+                
+
+                }
+            }
+        />        
     )
 }

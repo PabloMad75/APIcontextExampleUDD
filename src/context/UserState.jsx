@@ -8,14 +8,15 @@ export const UserState = ({children}) => {
     const initialState = {
         users: [
             {
-                id: 0,
-                nombre: 'Alan',
-                apellido: 'García',
-                rut: '18569777-0',
-                edad: 29,
-                correo: 'aegarmus@gmail.com'
+                id: '',
+                nombre: '',
+                apellido: '',
+                rut: '',
+                edad: '',
+                correo: ''
             }
-        ] 
+        ],
+        authStatus: false 
     }
 
     const [globalState, dispatch] = useReducer(reducer, initialState)
@@ -34,6 +35,19 @@ export const UserState = ({children}) => {
         }
     }
 
+    const signupUser = async(dataForm) => {
+        try {
+            const response = await axiosClient.post('/users', dataForm)
+
+            dispatch({
+                type:"REGISTRAR_USUARIO",
+                payload: response.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
 
     return (
@@ -41,6 +55,7 @@ export const UserState = ({children}) => {
             value={{
                 usersData: globalState.users,
                 getUsers,
+                signupUser
             }}
         >{children}</UsersContext.Provider>
     )
