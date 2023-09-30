@@ -1,13 +1,15 @@
-import { useNavigate } from "react-router-dom"
+
 import UsersContext from "../context/UsersContext"
 import { useContext, useEffect, useState } from "react"
 
 
 
 export const LoginForm = () => {
-    const navigate = useNavigate()
+
     const userCtx = useContext(UsersContext)
 
+
+    console.log(userCtx)
     const {
         loginUser,
         authStatus,
@@ -19,14 +21,11 @@ export const LoginForm = () => {
         password: '',
     })
 
-    console.log (authStatus)
     useEffect(() => {
         verifyingToken()
-
-        console.log(authStatus)
-
+    
         if(authStatus) {
-            navigate('/')
+            alert("sesion iniciada con exito")
         }
     }, [authStatus])
 

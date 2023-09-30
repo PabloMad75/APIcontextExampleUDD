@@ -67,7 +67,6 @@ export const UserState = ({children}) => {
     const verifyingToken = async() => {
         const token = localStorage.getItem('token')
 
-        console.log(token)
 
         if(token) {
             axiosClient.defaults.headers.common['authorization'] = token
@@ -77,7 +76,7 @@ export const UserState = ({children}) => {
 
         const response = await axiosClient.get('/verify-token')
 
-        console.log(response)
+
 
         dispatch({
             type: "OBTENER_USUARIO",
@@ -91,6 +90,7 @@ export const UserState = ({children}) => {
         <UsersContext.Provider 
             value={{
                 usersData: globalState.users,
+                authStatus: globalState.authStatus,
                 getUsers,
                 signupUser,
                 loginUser,
