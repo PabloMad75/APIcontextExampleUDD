@@ -31,6 +31,14 @@ export const reducer = (globalState, action) => {
                 authStatus: true,
                 usersData: action.payload
             }
+        
+        case "CERRAR_SESION":
+            localStorage.removeItem('token')
+
+            return {
+                usersData: '',
+                authStatus: false
+            }
 
         default: 
             return globalState

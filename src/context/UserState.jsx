@@ -84,6 +84,11 @@ export const UserState = ({children}) => {
         })
     }
 
+    const logout = () => {
+        dispatch({
+            type: "CERRAR_SESION"
+        })
+    }
 
 
     return (
@@ -94,7 +99,8 @@ export const UserState = ({children}) => {
                 getUsers,
                 signupUser,
                 loginUser,
-                verifyingToken
+                verifyingToken,
+                logout
             }}
         >{children}</UsersContext.Provider>
     )

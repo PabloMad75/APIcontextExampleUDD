@@ -1,4 +1,5 @@
 
+import { useNavigate } from "react-router-dom";
 import UsersContext from "../context/UsersContext"
 import { useContext, useEffect, useState } from "react"
 
@@ -6,6 +7,7 @@ import { useContext, useEffect, useState } from "react"
 
 export const LoginForm = () => {
 
+    const navigate = useNavigate();
     const userCtx = useContext(UsersContext)
 
 
@@ -25,9 +27,9 @@ export const LoginForm = () => {
         verifyingToken()
     
         if(authStatus) {
-            alert("sesion iniciada con exito")
+            navigate("/books")
         }
-    }, [authStatus])
+    }, [authStatus, verifyingToken, navigate])
 
     const onChangeData = (event) => {
 
